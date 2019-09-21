@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" href="css/layui.css">
+</head>
+<body>
+
+<form class="layui-form" id="loginForm">
+    <div class="layui-form-item">
+        <label class="layui-form-label">输入框</label>
+        <div class="layui-input-block">
+            <input type="text" name="userName" id="loginUser" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码框</label>
+        <div class="layui-input-inline">
+            <input type="password" name="userPwd" id="loginPwd" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" type="submit" th:onclick="dologin()">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+</body>
+<script src="js/layui.js"></script>
+<script src="js/jquery.js"></script>
+<script>
+    function dologin() {
+        var username = $("#loginUser").val();
+        var userpwd = $("#loginPwd").val();
+
+        $.ajax({
+            type:"post",
+            url:"/dologin",
+            data:{"username":username,"userpwd":userpwd},
+            datatype:"json",
+            success:function (r) {
+                if (r.code==0){
+                    location.href="/success";
+                } else {
+                    alert(r.msg);
+                }
+            }
+        })
+    }
+</script>
+</html>

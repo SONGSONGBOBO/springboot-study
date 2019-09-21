@@ -1,0 +1,11 @@
+2019-03-08 20:41:30.388  INFO 14641 --- [main] com.example.slf4j.Slf4jApplicationTests  : Starting Slf4jApplicationTests on songbo-PC with PID 14641 (started by songbo in /home/songbo/IdeaProjects/springboot-study/slf4j)
+2019-03-08 20:41:30.389 DEBUG 14641 --- [main] com.example.slf4j.Slf4jApplicationTests  : Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2019-03-08 20:41:30.390  INFO 14641 --- [main] com.example.slf4j.Slf4jApplicationTests  : No active profile set, falling back to default profiles: default
+2019-03-08 20:41:31.607  INFO 14641 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-08 20:41:31.806  INFO 14641 --- [main] com.example.slf4j.Slf4jApplicationTests  : Started Slf4jApplicationTests in 1.706 seconds (JVM running for 2.466)
+2019-03-08 20:41:31.925 TRACE 14641 --- [main] com.example.slf4j.Slf4jApplicationTests  : trace日志
+2019-03-08 20:41:31.925 DEBUG 14641 --- [main] com.example.slf4j.Slf4jApplicationTests  : debug
+2019-03-08 20:41:31.925  INFO 14641 --- [main] com.example.slf4j.Slf4jApplicationTests  : info
+2019-03-08 20:41:31.925  WARN 14641 --- [main] com.example.slf4j.Slf4jApplicationTests  : warn
+2019-03-08 20:41:31.925 ERROR 14641 --- [main] com.example.slf4j.Slf4jApplicationTests  : error
+2019-03-08 20:41:31.930  INFO 14641 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
