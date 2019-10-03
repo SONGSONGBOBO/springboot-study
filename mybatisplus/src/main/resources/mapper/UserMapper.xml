@@ -1,12 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.songbo.mybatisplus.dao.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.songbo.mybatisplus.dao.domain.User" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.songbo.mybatisplus.dao.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.songbo.mybatisplus.dao.domain.User">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <collection property="sons" ofType="com.songbo.mybatisplus.dao.domain.Son" >
+      <id column="son_id" property="sonId" jdbcType="INTEGER" />
+      <result column="son_name" property="sonName" jdbcType="VARCHAR" />
+      <result column="son_user_id" property="sonUserId" jdbcType="INTEGER" />
+    </collection>
   </resultMap>
+  <select id="getSonsByUserId" resultMap="BaseResultMap">
+    select u.*, s.*
+    from  user u
+    left join  son s
+    on u.user_id = s.son_user_id
+    where u.user_id = #{id}
+  </select>
+  <select id="getSonById" resultType="com.songbo.mybatisplus.dao.domain.Son">
+    select s.*
+    from son s, user u
+    where u.user_id = s.son_user_id
+    and u.user_id = #{id}
+  </select>
+  <select id="getUserList" resultMap="BaseResultMap">
+    select u.*, s.*
+    from  user u
+    left join  son s
+    on u.user_id = s.son_user_id
+  </select>
+
 </mapper>

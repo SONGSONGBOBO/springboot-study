@@ -23,4 +23,5 @@ public class UserService {
         List<User> users = userMapper.selectAll();
         return users;
     }
+
 }

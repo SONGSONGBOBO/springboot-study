@@ -1,61 +1,30 @@
 package com.songbo.mybatisplus.dao.domain;
 
-import lombok.ToString;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-@ToString
+@Data
+@TableName(value = "user", resultMap = "BaseResultMap")
 public class User implements Serializable {
-    @Id
-    @Column(name = "user_id")
+    @TableId(type = IdType.AUTO)
     private Integer userId;
 
-    @Column(name = "user_name")
+    @TableField
     private String userName;
 
-    @Column(name = "user_pwd")
+    @TableField
     private String userPwd;
+    @Transient
+    //@TableField(exist = false)
+    //tmd使用这个注解也不好使啊
+    private List<Son> sons = new ArrayList<>();
 
-    /**
-     * @return user_id
-     */
-    public Integer getUserId() {
-        return userId;
-    }
-
-    /**
-     * @param userId
-     */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    /**
-     * @return user_name
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * @param userName
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    /**
-     * @return user_pwd
-     */
-    public String getUserPwd() {
-        return userPwd;
-    }
-
-    /**
-     * @param userPwd
-     */
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
-    }
 }
