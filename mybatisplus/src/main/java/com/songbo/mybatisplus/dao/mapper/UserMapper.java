@@ -1,5 +1,7 @@
 package com.songbo.mybatisplus.dao.mapper;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.songbo.mybatisplus.dao.domain.Son;
 import com.songbo.mybatisplus.dao.domain.User;
 import tk.mybatis.mapper.common.Mapper;
