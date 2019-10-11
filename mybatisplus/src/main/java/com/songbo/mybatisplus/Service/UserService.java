@@ -1,15 +1,13 @@
 package com.songbo.mybatisplus.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.songbo.mybatisplus.dao.domain.Son;
 import com.songbo.mybatisplus.dao.domain.User;
 import com.songbo.mybatisplus.dao.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @ClassName UserService
@@ -24,6 +22,7 @@ public class UserService {
     private UserMapper userMapper;
 
     public List<User> getUserList(){
+
         List<User> users = userMapper.selectAll();
         return users;
     }
@@ -35,4 +34,14 @@ public class UserService {
         return t;
     }
 
+    public List<Son> getUserById(int id) throws InterruptedException {
+        //Thread.sleep(1000);
+        try {
+            List<Son> sonById = userMapper.getSonById(id);
+            return sonById;
+        } catch (Exception e){
+            return null;
+        }
+
+    }
 }

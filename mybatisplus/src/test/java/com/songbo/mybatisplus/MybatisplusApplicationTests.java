@@ -19,6 +19,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorCompletionService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -63,6 +67,23 @@ public class MybatisplusApplicationTests {
         Page<Account> accountPage = new Page<Account>(2,5);
         IPage<Account> accountPage1 = accountMapper.getAccountPage(accountPage, 1);
         System.out.println(JSONObject.toJSON(accountPage1));
+    }
+
+    @Test
+    public void testThread(){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                    System.out.println(Thread.currentThread().getName());
+
+            }
+        };
+
+        ExecutorService executorService = Executors.newFixedThreadPool(25);
+        for (int i = 0; i < 1000; i++) {
+            executorService.submit(runnable);
+        }
+        System.out.println((int) Thread.currentThread().getId());
     }
 
 
