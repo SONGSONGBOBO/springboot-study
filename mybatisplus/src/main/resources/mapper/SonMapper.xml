@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.songbo.mybatisplus.dao.mapper.SonMapper" >
+  <resultMap id="BaseResultMap" type="com.songbo.mybatisplus.dao.domain.Son" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="son_id" property="sonId" jdbcType="INTEGER" />
+    <result column="son_name" property="sonName" jdbcType="VARCHAR" />
+    <result column="son_user_id" property="sonUserId" jdbcType="INTEGER" />
+
+    <!--<association property="user" javaType="com.songbo.mybatisplus.dao.domain.User">
+      <id column="user_id" jdbcType="INTEGER" property="userId" />
+      <result column="user_name" jdbcType="VARCHAR" property="userName" />
+      <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    </association>-->
+  </resultMap>
+</mapper>
