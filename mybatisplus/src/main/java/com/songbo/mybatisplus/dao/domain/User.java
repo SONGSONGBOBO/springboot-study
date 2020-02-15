@@ -24,7 +24,7 @@ public class User implements Serializable {
     private String userPwd;
     @Transient
     //@TableField(exist = false)
-    //tmd使用这个注解也不好使啊
+    //tmd使用这个注解也不好使啊,包冲突了全部换成mybatisplus即可
     private List<Son> sons = new ArrayList<>();
 
 }
