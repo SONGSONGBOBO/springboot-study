@@ -24,16 +24,16 @@
         <!-- JDBC连接 -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://localhost:3306/alltest?characterEncoding=UTF-8"
+                connectionURL="jdbc:mysql://localhost:3306/cqtravel?characterEncoding=UTF-8"
                 userId="root"
                 password="ab5051">
         </jdbcConnection>
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.songbo.mybatisplus.dao.domain" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.songbo.mybatisplus.testGenerator.dao.domain" targetProject="src/main/java"/>
         <!-- 生成mapper xml文件 -->
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
         <!-- 生成mapper xml对应Client-->
-        <javaClientGenerator targetPackage="com.songbo.mybatisplus.dao.mapper" targetProject="src/main/java"
+        <javaClientGenerator targetPackage="com.songbo.mybatisplus.testGenerator.dao.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
         <!-- 配置表信息 -->
         <table tableName="%">

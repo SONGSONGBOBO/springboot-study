@@ -8,6 +8,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,19 +30,27 @@ public class TestController {
     @Autowired
     private SimpMessagingTemplate template;
 
+    /*@RequestMapping("/test/{text}")
+    public void test(@PathVariable String text) {
+        template.convertAndSend("/topic/sendTopic", text);
+    }*/
+
     /**
      * 服务器指定用户进行推送,需要前端开通 var socket = new SockJS(host+'/myUrl' + '?token=1234');
      */
-    @RequestMapping("/sendUser")
-    public void sendUser(String token) {
+    @RequestMapping("/sendUser/{token}/{text}")
+    public void sendUser(@PathVariable String token,
+                         @PathVariable String text) {
         log.info("token = {} ,对其发送您好", token);
         WebSocketSession webSocketSession = SocketManager.get(token);
         if (webSocketSession != null) {
             /**
              * 主要防止broken pipe
              */
-            template.convertAndSendToUser(token, "/queue/sendUser", "您好");
+            template.convertAndSendToUser("1234", "/queue/sendUser", text);
+
         }
+
 
     }
 

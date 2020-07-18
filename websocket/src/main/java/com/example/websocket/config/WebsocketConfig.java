@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
-import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
-import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
-import org.springframework.web.socket.config.annotation.WebSocketTransportRegistration;
+import org.springframework.web.socket.config.annotation.*;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
@@ -20,7 +17,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
  **/
 @Configuration
 @EnableWebSocketMessageBroker
-public class WebsocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
+public class WebsocketConfig implements   WebSocketMessageBrokerConfigurer {
 
    /* @Bean
     public ServerEndpointExporter serverEndpointExporter(){
@@ -56,7 +53,7 @@ public class WebsocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
     @Override
     public void configureWebSocketTransport(WebSocketTransportRegistration registration) {
         registration.addDecoratorFactory(webSocketDecoratorFactory);
-        super.configureWebSocketTransport(registration);
+        //super.configureWebSocketTransport(registration);
     }
 
 }

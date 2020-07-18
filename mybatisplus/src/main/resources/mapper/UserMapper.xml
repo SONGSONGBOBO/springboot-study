@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.songbo.mybatisplus.dao.mapper.UserMapper">
+<mapper namespace="com.songbo.mybatisplus.testGenerator.dao.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.songbo.mybatisplus.testGenerator.dao.domain.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_status" jdbcType="INTEGER" property="userStatus" />
+  </resultMap>
   <resultMap id="BaseResultMap" type="com.songbo.mybatisplus.dao.domain.User">
     <!--
       WARNING - @mbg.generated
@@ -8,10 +18,10 @@
     <id column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
-    <collection property="sons" ofType="com.songbo.mybatisplus.dao.domain.Son" >
-      <id column="son_id" property="sonId" jdbcType="INTEGER" />
-      <result column="son_name" property="sonName" jdbcType="VARCHAR" />
-      <result column="son_user_id" property="sonUserId" jdbcType="INTEGER" />
+    <collection ofType="com.songbo.mybatisplus.dao.domain.Son" property="sons">
+      <id column="son_id" jdbcType="INTEGER" property="sonId" />
+      <result column="son_name" jdbcType="VARCHAR" property="sonName" />
+      <result column="son_user_id" jdbcType="INTEGER" property="sonUserId" />
     </collection>
   </resultMap>
   <select id="getSonsByUserId" resultMap="BaseResultMap">
